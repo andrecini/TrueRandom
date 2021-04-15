@@ -1,0 +1,7 @@
+C:\Users\admin\Desktop\TestesEstudoDeCodigos\DataRandom\obj\Debug\DataRandom.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\TestesEstudoDeCodigos\DataRandom\obj\Debug\DataRandom.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\TestesEstudoDeCodigos\DataRandom\bin\Debug\DataRandom.exe.config
+C:\Users\admin\Desktop\TestesEstudoDeCodigos\DataRandom\bin\Debug\DataRandom.exe
+C:\Users\admin\Desktop\TestesEstudoDeCodigos\DataRandom\bin\Debug\DataRandom.pdb
+C:\Users\admin\Desktop\TestesEstudoDeCodigos\DataRandom\obj\Debug\DataRandom.exe
+C:\Users\admin\Desktop\TestesEstudoDeCodigos\DataRandom\obj\Debug\DataRandom.pdb
