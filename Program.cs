@@ -19,21 +19,39 @@ namespace DataRandom
             Console.Write("\nDigite ENTER para começar:\n");
             Console.ReadLine();
 
-            Console.WriteLine("\n|\t\tDecimais\t\t|\t\tBinários\t\t|");
+            Console.WriteLine("\n|\t   Decimais TrueRandom   \t|");
 
-            TrueRandom rdm = new TrueRandom();
+            Random rdm = new Random();
+            TrueRandom trdm = new TrueRandom();
             Stopwatch sw = new Stopwatch();
 
+            #region Iterações Random
             sw.Start();
 
             for (int i = 0; i < qtdd; i++)
             {
-                Console.WriteLine("|\t\t    {0}    \t\t|\t\t      {1}      \t\t|", rdm.SetNumber(max), rdm.SetBinary());
+                Console.WriteLine("|\t\t    {0}    \t\t|", trdm.SetInteger(max));
             }
 
             sw.Stop();
+            #endregion
 
             Console.WriteLine(sw.ElapsedMilliseconds);
+
+            #region Iterações Random
+            ///Console.WriteLine("\n|\t    Decimais Random\t\t|");
+            ///
+            ///sw.Start();
+            ///
+            ///for (int i = 0; i < qtdd; i++)
+            ///{
+            ///    Console.WriteLine("|\t\t    {0}    \t\t|", rdm.Next(max));
+            ///}
+            ///
+            ///sw.Stop();
+            ///
+            ///Console.WriteLine(sw.ElapsedMilliseconds);
+            #endregion
 
             Console.ReadLine();
 

@@ -12,7 +12,25 @@ namespace DataRandom
         private Stopwatch sw = new Stopwatch();
         private Random rdm = new Random();
 
+        #region Set Binary
+        public int SetBinary()
+        {
+            return int.Parse(SetInterval().ToString()) % 2;
+        }
 
+        private double SetInterval()
+        {
+            sw.Start();
+            Delay();
+            sw.Stop();
+
+            double interval = sw.ElapsedTicks;
+
+            VerifyInterval(ref interval);
+
+            return interval;
+        }
+        
         private void Delay()
         {
             sw.Start();
@@ -28,19 +46,6 @@ namespace DataRandom
             }
         }
 
-        private double SetInterval()
-        {
-            sw.Start();
-            Delay();
-            sw.Stop();
-
-            double interval = sw.ElapsedTicks;
-
-            VerifyInterval(ref interval);
-
-            return interval;
-        }
-
         private void VerifyInterval(ref double interval)
         {
             if (interval > 5)
@@ -48,39 +53,37 @@ namespace DataRandom
                 interval = rdm.Next(5);
             }
         }
+        #endregion
 
-        public int SetBinary()
+        #region Set Integer
+        public long SetInteger(int max)
         {
-            return int.Parse(SetInterval().ToString())%2;
-        }
-
-        public int SetNumber(int max)
-        {
-            string maxValue = DecimalToBinary(max.ToString());
+            long maxValue = DecimalToBinary(max.ToString());
             string value;
+            
             do
             {
-                value = SetValue(maxValue.Length);
-            } while (double.Parse(value) > double.Parse(maxValue));
+                value = SetValue(maxValue.ToString().Length);
+            } while (double.Parse(value) > maxValue);
 
             return BinaryToDecimal(value);
         }
 
-        private string InvertString(string str)
+        public long SetInteger(int min, int max)
         {
-            int tamanho = str.Length;
+            long maxValue = DecimalToBinary(max.ToString());
+            long minValue = DecimalToBinary(min.ToString());
+            string value;
 
-            char[] caracteres = new char[tamanho];
-
-            for (int i = 0; i < tamanho; i++)
+            do
             {
-                caracteres[i] = str[tamanho - 1 - i];
-            }
+                value = SetValue(maxValue.ToString().Length);
+            } while (double.Parse(value) > maxValue || double.Parse(value) < minValue);
 
-            return new string(caracteres);
+            return BinaryToDecimal(value);
         }
 
-        private string DecimalToBinary(string numero)
+        private long DecimalToBinary(string numero)
         {
 
             string valor = "";
@@ -90,7 +93,7 @@ namespace DataRandom
             if (dividendo == 0 || dividendo == 1)
             {
 
-                return Convert.ToString(dividendo);
+                return dividendo;
 
             }
 
@@ -106,7 +109,7 @@ namespace DataRandom
 
                 }
 
-                return InvertString(valor);
+                return long.Parse(InvertString(valor));
 
             }
 
@@ -144,6 +147,20 @@ namespace DataRandom
 
         }
 
+        private string InvertString(string str)
+        {
+            int tamanho = str.Length;
+
+            char[] caracteres = new char[tamanho];
+
+            for (int i = 0; i < tamanho; i++)
+            {
+                caracteres[i] = str[tamanho - 1 - i];
+            }
+
+            return new string(caracteres);
+        }
+
         private string SetValue(int length)
         {
             string value = string.Empty;
@@ -155,6 +172,10 @@ namespace DataRandom
 
             return value;
         }
+        #endregion
 
+        #region Commum
+
+        #endregion
     }
 }
